@@ -4,7 +4,7 @@ N = int(input())
 graph = [list(map(int, input().split(" "))) for _ in range(N)]
 
 cnt = []
-for c in range(0, 101):
+for c in range(0, 101): # 높이 체크를 1부터 계속 해서 오류가 발생.. 0부터 체크하도록
     visited = [[False for _ in range(N)] for _ in range(N)]
     tmp_cnt = 0
     for i in range(N):
