@@ -17,7 +17,7 @@ def air_cover_cnt(y, x, N, M):
         ny = y + dy[i]
         nx = x + dx[i]
         
-        if 0 <= ny < N and 0 <= nx < M and graphs[ny][nx] == -1:
+        if 0 <= ny < N and 0 <= nx < M and graphs[ny][nx] == -1: # 주변 외부공기 갯수 체크
             cnt += 1
             
     return cnt
@@ -36,7 +36,7 @@ while True:
     que.append([0, 0]) # 방문 큐에 추가
     
     while que: # bfs 순회 시작
-        y, x = que.pop()
+        y, x = que.popleft()
 
         for k in range(4):
             ny = y + dy[k]
@@ -45,14 +45,14 @@ while True:
             if 0 <= ny < N and 0 <= nx < M: 
                 if not visited[ny][nx] and (graphs[ny][nx] == 0 or graphs[ny][nx] == -1): # 범위 내에 있으면,
                     visited[ny][nx] = True
-                    graphs[ny][nx] = -1
+                    graphs[ny][nx] = -1 # 외부공기는 -1로 인식해준다.
                     que.append([ny, nx])
       
     cheese = []
     visited = [[False for _ in range(M)] for _ in range(N)]
     for i in range(N):
         for j in range(M):
-            if graphs[i][j] == 1 and air_cover_cnt(i, j, N, M) > 1:
+            if graphs[i][j] == 1 and air_cover_cnt(i, j, N, M) > 1: # 치즈면서, 주변 공기가 2개 이상이면
                 cheese.append([i, j])
                 
     for i in cheese:
