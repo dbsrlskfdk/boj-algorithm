@@ -31,7 +31,7 @@ for w, (a, b) in edges:
     
     union(a, b)
     
-    if e_num == E-1:
+    if e_num == V-1:
         break
         
 print(spanning_dist)
