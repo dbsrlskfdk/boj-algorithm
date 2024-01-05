@@ -34,7 +34,7 @@ B_sub_sort = sorted(B_sub, reverse=True)
 
 a, b = 0, 0
 cnt = 0
-flag = True # True면 b가 증가, False면 a가 증가
+flag = False # True면 b가 증가, False면 a가 증가
 
 while a < len(A_sub) and b < len(B_sub):
     # print(a, b)
