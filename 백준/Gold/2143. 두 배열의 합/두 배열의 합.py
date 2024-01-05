@@ -34,7 +34,6 @@ B_sub_sort = sorted(B_sub, reverse=True)
 
 a, b = 0, 0
 cnt = 0
-flag = False # True면 b가 증가, False면 a가 증가
 
 while a < len(A_sub) and b < len(B_sub):
     # print(a, b)
@@ -43,16 +42,10 @@ while a < len(A_sub) and b < len(B_sub):
     
     if section_sum > T:
         b += 1
-        flag = True
     elif section_sum < T:
         a += 1
-        flag = False
     else:
         cnt += A_sub[A_sub_sort[a]] * B_sub[B_sub_sort[b]]
-        # 같을 떄 처리를 어떻게 할건지...
-        if flag:
-            a += 1
-        else:
-            b += 1
+        b += 1
             
 print(cnt)
